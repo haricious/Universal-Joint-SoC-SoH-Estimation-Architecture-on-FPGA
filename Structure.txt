@@ -1,0 +1,33 @@
+/Universal_BMS_EKF_FPGA
+│
+├── /docs                            # Documentation and Specifications
+│   ├── system_architecture.png      # [Image] High-level block diagram
+│   └── project_specification.pdf    # [PDF] Detailed project plan
+│
+├── /matlab_model                    # Golden Reference & Algorithm Development
+│   ├── /scripts
+│   │   ├── gen_test_vectors.m       # [Script] Generates current/voltage profiles
+│   │   ├── float_to_fixed_hex.m     # [Script] Quantization utility (Float -> Q8.8 Hex)
+│   │   └── verify_rmse.m            # [Script] Post-simulation error analysis
+│   ├── /simulink
+│   │   ├── plant_li_ion.slx         # [Model] Li-Ion battery physics model
+│   │   └── plant_pb_acid.slx        # [Model] Lead-Acid battery physics model
+│   └── /vectors                     # Generated Test Artifacts
+│       ├── stimulus_li_ion.hex      # [Data] Input stimulus for Verilog
+│       ├── stimulus_pb_acid.hex     # [Data] Input stimulus for Verilog
+│       └── expected_soc_ref.txt     # [Data] Golden reference output
+│
+├── /rtl                             # Register Transfer Level (Verilog Source)
+│   ├── bms_estimator_top.v          # [Module] Top-level entity
+│   ├── adaptive_coulomb_counter.v   # [Module] CC with efficiency correction
+│   ├── ekf_matrix_engine.v          # [Module] Generic EKF math core
+│   ├── ocv_lut_wrapper.v            # [Module] Multi-bank ROM controller
+│   ├── main_fsm.v                   # [Module] Finite State Machine
+│   └── soh_monitor.v                # [Module] Impedance/Health estimator
+│
+└── /verification                    # Simulation & Testing environment
+    ├── /testbench
+    │   └── tb_bms_universal.v       # [TB] Universal testbench (chemistry agnostic)
+    └── /sim_logs
+        ├── rtl_out_li_ion.txt       # [Log] Simulation result for Li-Ion
+        └── rtl_out_pb_acid.txt      # [Log] Simulation result for Lead-Acid

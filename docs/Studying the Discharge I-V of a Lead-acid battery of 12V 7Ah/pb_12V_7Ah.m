@@ -1,0 +1,20 @@
+v = [9 4 2.5 2.2 2 1.8 1.1 1 1 1 0.9];
+i = [2 0.9 0.75 0.5 0.4 0.28 0.25 0.24 0.24 0.24 0.24];
+t = 12.5:0.25:15;
+
+
+subplot(3,1,1)
+plot(t, v); 
+title('Voltage vs Time');
+ylabel('Voltage (V)');
+
+subplot(3,1,2)
+plot(t, i);
+title('Current vs Time');
+ylabel('Current (A)');
+
+subplot(3,1,3)
+plot(i, v); 
+title('Voltage vs Current');
+xlabel('Current (A)');
+ylabel('Voltage (V)');
