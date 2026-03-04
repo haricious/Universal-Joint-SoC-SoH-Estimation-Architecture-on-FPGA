@@ -11,19 +11,29 @@ module soh_adaptation(
     output reg signed [15:0] Ceff_out
 );
 
-wire signed [15:0] dR,dC;
+wire signed [15:0] dR;
+wire signed [15:0] dC;
 
 qmult m1(innovation,alpha,dR);
 qmult m2(soc_error,beta,dC);
 
 always @(posedge clk or posedge rst) begin
+
     if (rst) begin
-        R0_out<=R0_in;
-        Ceff_out<=Ceff_in;
-    end else begin
-        R0_out<=R0_in+dR;
-        Ceff_out<=Ceff_in+dC;
+
+        // Initialize with nominal parameters
+        R0_out   <= R0_in;
+        Ceff_out <= Ceff_in;
+
     end
+    else begin
+
+        // Update
+        R0_out   <= R0_out   + dR;
+        Ceff_out <= Ceff_out + dC;
+
+    end
+
 end
 
 endmodule

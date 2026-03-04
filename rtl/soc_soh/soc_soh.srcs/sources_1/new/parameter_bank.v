@@ -13,12 +13,12 @@ always @(*) begin
         // ---------------------------------------
         // 2'b00 : Lithium-Ion 3.7V (18650 type)
         // ---------------------------------------
-        2'b00: begin
-            R0      = 16'sd13;    // 0.05 ohm  (13/256)
-            C_eff   = 16'sd640;   // 2.5 Ah    (640/256)
-            eta     = 16'sd256;   // 1.0
-            a_coeff = 16'sd243;   // 0.95 RC decay
-            b_coeff = 16'sd10;    // small RC current gain
+        2'b00: begin // Li-ion
+            R0      = 16'sh0010;     // ≈0.01
+            C_eff   = 16'sd25600;    // 100% capacity
+            eta     = 16'sh0100;     // 1.0
+            a_coeff = 16'sh00F0;
+            b_coeff = 16'sh0008;
         end
 
         // ---------------------------------------
