@@ -3,6 +3,9 @@ verilog xil_defaultlib  --include "C:/AMDDesignTools/2025.2/Vivado/data/rsb/busd
 "../../../../soc_soh.srcs/sources_1/new/battery_state_model.v" \
 "../../../../soc_soh.srcs/sources_1/new/battery_voltage_model.v" \
 "../../../../soc_soh.srcs/sources_1/new/coulomb_counter.v" \
+"../../../../soc_soh.srcs/sources_1/new/ekf_covariance_update.v" \
+"../../../../soc_soh.srcs/sources_1/new/ekf_predict.v" \
+"../../../../soc_soh.srcs/sources_1/new/ekf_update.v" \
 "../../../../soc_soh.srcs/sources_1/new/ocv_lut_manager.v" \
 "../../../../soc_soh.srcs/sources_1/new/parameter_bank.v" \
 "../../../../soc_soh.srcs/sources_1/new/qmult.v" \
